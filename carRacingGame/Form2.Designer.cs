@@ -52,6 +52,7 @@ namespace carRacingGame
             this.startButton = new System.Windows.Forms.Button();
             this.scoreLabel = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.coin5 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.coin3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.coin1)).BeginInit();
@@ -70,12 +71,14 @@ namespace carRacingGame
             ((System.ComponentModel.ISupportInitialize)(this.rightLine)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.leftLine)).BeginInit();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.coin5)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Gray;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.coin5);
             this.panel1.Controls.Add(this.coin3);
             this.panel1.Controls.Add(this.coin1);
             this.panel1.Controls.Add(this.carEnemy5);
@@ -320,6 +323,17 @@ namespace carRacingGame
             this.timer1.Interval = 10;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // coin5
+            // 
+            this.coin5.BackColor = System.Drawing.Color.Gray;
+            this.coin5.Image = global::carRacingGame.Properties.Resources.coin2;
+            this.coin5.Location = new System.Drawing.Point(273, -68);
+            this.coin5.Name = "coin5";
+            this.coin5.Size = new System.Drawing.Size(24, 29);
+            this.coin5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.coin5.TabIndex = 42;
+            this.coin5.TabStop = false;
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -351,6 +365,7 @@ namespace carRacingGame
             ((System.ComponentModel.ISupportInitialize)(this.leftLine)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.coin5)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -380,5 +395,6 @@ namespace carRacingGame
         private System.Windows.Forms.PictureBox carEnemy52;
         private System.Windows.Forms.PictureBox coin1;
         private System.Windows.Forms.PictureBox coin3;
+        private System.Windows.Forms.PictureBox coin5;
     }
 }

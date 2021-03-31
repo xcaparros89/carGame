@@ -72,8 +72,7 @@ namespace carRacingGame
         private void timer1_Tick(object sender, EventArgs e)
         {
             moveline(gamespeed);
-            enemy(gamespeed);
-            coin(gamespeed);
+            moveObjDown(gamespeed);
             collisionCheckCoin();
             collisionCheckEnemy();
         }
@@ -98,51 +97,47 @@ namespace carRacingGame
             }
         }
 
-        void coin(int speed)
+ 
+
+        void moveObjDown(int speed)
         {
             Random r = new Random();
-            int x;
-            PictureBox[] coinsArr = { coin1, coin2, coin3, coin4 };
-            foreach (PictureBox coin in coinsArr)
+            int xCar;
+            int xCoin;
+            PictureBox[] coinsArr = { coin1, coin2, coin3, coin4, coin5 };
+            PictureBox[] enemyCarsArr = { carEnemy1, carEnemy2, carEnemy3, carEnemy4, carEnemy5 };
+            for (int i = 0; i < enemyCarsArr.Length; i++)
             {
-                if (coin.Top >= 500)
+                PictureBox enemyCar = enemyCarsArr[i];
+                PictureBox coin = coinsArr[i];
+
+                if (enemyCar.Top >= 500)
                 {
-                    x = r.Next(0, 200);
-                    coin.Location = new Point(x, -50);
+                    xCar = r.Next(0, 300);
+                    enemyCar.Location = new Point(xCar, -50);
+                    if (xCar > 150)
+                    {
+                        xCoin = r.Next(0, 150);
+                        coin.Location = new Point(xCoin, -50);
+                    }
+                    else
+                    {
+                        xCoin = r.Next(155, 300);
+                        coin.Location = new Point(xCoin, -50);
+                    }
                     coin.Visible = true;
                 }
                 else if (speed < 5 && speed > 0)
                 {
+                    enemyCar.Top += speed / 2 + 1;
                     coin.Top += speed / 2 + 1;
                 }
                 else if (speed > 4)
                 {
+                    enemyCar.Top += 5;
                     coin.Top += 5;
                 }
-            }
-        }
-        void enemy(int speed)
-        {
-            Random r = new Random();
-            int x;
-            int carImage;
-            PictureBox[] enemyCarsArr = { carEnemy1, carEnemy2, carEnemy3, carEnemy4, carEnemy5 };
-            foreach (PictureBox enemyCar in enemyCarsArr)
-            {
-                if (enemyCar.Top >= 500)
-                {
-                    x = r.Next(0, 200);
-                    enemyCar.Location = new Point(x, -50);
-                    //carImage = r.Next(1, 5);
-                }
-                else if (speed < 5 && speed > 0)
-                {
-                    enemyCar.Top += speed / 2 + 1;
-                }
-                else if (speed > 4)
-                {
-                    enemyCar.Top += 5;
-                }
+
             }
         }
 
